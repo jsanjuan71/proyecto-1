@@ -1,15 +1,17 @@
 
 
 
-const precios = [ 100, 10.5, 50, 1, 43, -65, 23, 323 ]
+const precios = [ 100, 105, 10, 100, 40, -65, 23, 12 ]
 
 var todosPositivos = precios.every(num => num > 0) // si todos cumplen
 
 var hayUnoMayorACien = precios.some(num => num > 100 ) // si al menos uno cumple
 
-console.log( precios.reverse() )
+console.log( precios.reverse().toString() )
 
 console.log( precios.sort() ) 
+
+var ordenados = precios.sort()
 
 var totalPrecios = precios.reduce( (total, precio) => total + precio )
 console.log("Total Precios", totalPrecios)
