@@ -30,7 +30,11 @@ let pizza = {
     }
 }
 
+const objetoComoString = JSON.stringify(pizza)
+console.log( objetoComoString )
 
+
+console.log( JSON.parse(objetoComoString) )
 
 
 pizza.tamanos.jumbo = {
