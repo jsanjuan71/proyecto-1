@@ -14,31 +14,68 @@
             display: grid;
             grid-template-columns: 50% auto;
         }
+
+        .social__link{
+            border: solid 1px red;
+        }
+
+        img {
+
+        }
+
+        #redesSociales{
+            justify-content: flex-end;
+        }
+
+        .titulo1{
+            color: blue
+
+        }
+
+        .fullWidth{
+            width: 90%;
+        }
     </style>
 </head>
 <body>
-    <div class="social">
-        <a href="https://api.whatsapp.com/send?phone=523331678104&text=%22Hola%2C%20me%20interesa%20un%20servicio%2C%20%C2%A1saludos!%22"
+    <h1 class="titulo1">Bienvenid@s</h1>
+    <div class="social" id="redesSociales">
+        <a  class="social__link verde"
+            href="https://api.whatsapp.com/send?phone=523331678104&text=%22Hola%2C%20me%20interesa%20un%20servicio%2C%20%C2%A1saludos!%22"
             target="_new">
             <img width="32px" 
                 src="https://res.cloudinary.com/sahj/image/upload/v1685760493/whatsapp2_kw0n5h.jpg">
         </a>
         &nbsp;
-        <a href="https://www.facebook.com/trazovinil/"
+        <a  class="social__link"
+            href="https://www.facebook.com/trazovinil/"
             target="_new">
             <img width="32px" 
                 src="https://res.cloudinary.com/sahj/image/upload/v1685760493/facebook_epqqzv.jpg">
         </a>
         &nbsp;
-        <a href="https://www.instagram.com/trazodiseno/"
+        <a  class="social__link"
+            href="https://www.instagram.com/trazodiseno/"
             target="_new">
             <img width="32px" 
                 src="https://res.cloudinary.com/sahj/image/upload/v1685762580/insta_iovr38.jpg">
         </a>
     </div>
+    <img src="insta.jpg" class="fullWidth" onclick="saludar()" >
+    <script src="dom.js"></script>
+    <p>Hola soy un parrafo</p>
 
-    <script src="pizzas.js"></script>
+    <form>
+        <input type="text" name="nombre" id="nombre">
+        <input type="text" name="apellido" id="apellido">
+        <input type="submit" value="Enviar">
+    </form>
     
+    <script type="text/javascript">
+        function saludar(){
+            alert("Hola");
+        }
+    </script>
 
 </body>
 </html>
