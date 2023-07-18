@@ -77,4 +77,15 @@ fetch(randomQuackUrl)
         random_quack_img.setAttribute("width", "128")
     })
 
-    
+
+function weather_get() {
+    let city = document.getElementById("weather_city_name").value
+    const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=616629f9acdc3b22b8b09553e632e5da`
+    fetch(weatherApiUrl)
+        .then(response => response.json())
+        .then(data => {
+            console.log("data: ", data)
+            let weather_result = document.getElementById("weather_result")
+            weather_result.innerHTML = data.weather[0].description
+        })
+}
