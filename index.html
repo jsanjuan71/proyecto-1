@@ -4,12 +4,134 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APIS</title>
+    <title>ChartJS</title>
+    <style>
+        .chart-container{
+            box-shadow: 0 0 15px lightgray;
+            border-radius: 5px;
+            width: 480px;
+            height: auto;
+        }
+    </style>
 </head>
-<body>
-    <h1>AXIOS 2</h1>
+<body style="margin: 1em;">
+    <h1>Preferred profiles by UCampers</h1>
+    <div class="chart-container">
+        <canvas id="myChart"></canvas>
+    </div>
 
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script> 
-    <script src="./axios.js"></script>
+
+
+    <h1>Salary average for seniority</h1>
+    <div class="chart-container">
+        <canvas id="salary-chart"></canvas>
+    </div>
+
+    <h1>Dollar exchange rate</h1>
+    <div class="chart-container">
+        <canvas id="usd-exchange"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        /**
+         * Preferred profiles by UCampers
+         */
+        const ctx = document.getElementById('myChart');
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Mobile', 'Backend', 'Frontend', 'UI-UX', 'DevOps', 'Lead'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    borderWidth: 10,
+                    fill: true,
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+            }
+            }
+        });
+
+        /**
+         * Salary average for seniority
+         */
+
+        const profiles = [
+            {
+                seniority: 'Jr',
+                salary: 1
+            },
+            {
+                seniority: 'Semi-sr',
+                salary: 2.5
+            },
+            {
+                seniority: 'Senior',
+                salary: 4
+            }
+        ];
+        const data = {
+            labels: profiles.map(profile => profile.seniority),
+            datasets: [
+                {
+                    label: 'K USD',
+                    data: profiles.map(profile => profile.salary),
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)'
+                    ],
+                    hoverOffset: 40
+                }
+            ]
+            };
+
+        const config = {
+            type: 'doughnut',
+            data: data,
+            options: {
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    }
+                }
+            },
+        };
+
+        const myChart = new Chart(
+            document.getElementById('salary-chart'),
+            config
+        );
+
+        /**
+         * USD Exchange rate
+         */
+        const usdExchange = new Chart(
+            document.getElementById('usd-exchange'),
+            {   
+                type: 'line',
+                data: {
+                    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                    datasets: [
+                        {
+                            label: 'USD Exchange rate',
+                            data: [65, 59, 80, 81, 56, 55, 40],
+                            fill: false,
+                            borderColor: 'rgb(75, 192, 192)',
+                            tension: 0.1
+                        }
+                    ]
+                },
+            }
+        );
+    </script>
 </body>
 </html>
