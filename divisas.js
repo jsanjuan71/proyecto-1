@@ -7,6 +7,10 @@ async function exchange_convert_async(url) {
     exchange_result.innerHTML = data[destination] * unit_exchange_quantity  + destination
 }
 
+const url = "https://api.exchangerate-api.com/v4/latest/USD"
+
+exchange_convert_async(url)
+
 function formatMoney(amount, currency) {
     return "$" + amount.toFixed(2) + " " + currency
 }
@@ -36,12 +40,12 @@ function exchange_convert() {
 
     fetch(EXCHANGE_API)
         .then(response => response.json())
-        .then(data => {
-            console.log("data: ", data)
+        .then(x => {
+            console.log("data: ", x)
 
             let exchange_result = document.getElementById("exchange_result")
             unit_exchange_quantity = document.getElementById("unit_exchange_quantity").value
-            let amount = data[destination] * unit_exchange_quantity
+            let amount = x[destination] * unit_exchange_quantity
             exchange_result.innerHTML = formatMoney(amount, destination)
         })
         .catch(error => {
@@ -67,6 +71,7 @@ const random_quack_img = document.getElementById("random_quack_img")
 fetch(randomQuackUrl)
     .then(response => response.json())  
     .then(data => {
+        // streaming de datos -> CHUNK
         console.log("data: ", data)
         random_quack_img.src = data.url
     })
@@ -76,6 +81,8 @@ fetch(randomQuackUrl)
         random_quack_img.alt = "Random quack image"
         random_quack_img.setAttribute("width", "128")
     })
+
+    //const t=document.getElementById("random_quack_img");fetch("https://random-d.uk/api/v2/random").then((t=>t.json())).then((o=>{console.log("data: ",o),t.src=o.url})).catch((o=>{console.log("error: ",o),t.src="https://random-d.uk/api/v2/randomimg",t.alt="Random quack image",t.setAttribute("width","128")}));
 
 
 function weather_get() {
@@ -89,3 +96,21 @@ function weather_get() {
             weather_result.innerHTML = data.weather[0].description
         })
 }
+
+// Consumo de API de usuarios
+GET usuarios/   -> obtener todos los usuarios
+GET usuarios/20  -> obtener el usuario con id 1
+GET usuarios/20?cebolla=no&aderezo=ranch
+
+GET usuarios/20/posts -> obtener los posts del usuario con id 20
+GET usuarios/20/posts/10 -> obtener el post con id 10 del usuario con id 20
+
+
+// Definicion de la API
+GET usurios/
+GET usuarios/:id
+GET usuarios/:id/posts
+GET usuarios/:id/posts/:postid
+
+POST usuarios/
+    -> body -> { "nombre": "Julio", "edad": 32, "estatura": 1.71, usuario: "jsanjuan", password:"new2023" }
