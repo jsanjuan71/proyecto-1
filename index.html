@@ -7,41 +7,9 @@
     <title>APIS</title>
 </head>
 <body>
-    <h1>APIS</h1>
-    <img id="random_quack_img" >
-    <br><hr>
-    <label>Unidades</label>
-    <input id="unit_exchange_quantity" type="number">
-    <select id="exchange_origin_selector">
-        <option value="usd">DOLAR ESTADOUNIDENSE</option>
-        <option value="mxn">PESO MEXICANO</option>
-        <option value="cop">PESO COLOMBIANO</option>
-        <option value="eur">EURO</option>
-    </select>
-    <br>
-    <label>Destino</label>
-    <select id="exchange_destination_selector">
-        <option value="usd">DOLAR ESTADOUNIDENSE</option>
-        <option selected value="mxn">PESO MEXICANO</option>
-        <option value="cop">PESO COLOMBIANO</option>
-        <option value="eur">EURO</option>
-    </select>
+    <h1>AXIOS 2</h1>
 
-    <button onclick="exchange_convert(this)" id="btn_exchange_convert">Convertir</button>
-    <h2>Resultado</h2>
-    <p id="exchange_result">...</p>
-
-    <hr>
-    <h2>Estado del clima</h2>
-    <label>Ingresa el nombre de la ciudad</label>
-    <input id="weather_city_name" type="text">
-    <button onclick="weather_get(this)" id="btn_weather_get">Consultar</button>
-    <h3 id="weather_result"></h3>
-
-    <hr>
-    <h3>Generar un QR</h3>
-    <img id="qr_code_img">
-
-    <script src="./divisas.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script> 
+    <script src="./axios.js"></script>
 </body>
 </html>
